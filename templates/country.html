@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+<nav>
+
+{% block content %}
+
+
+<h1>
+    Country
+</h1>
+
+<a href="{% url 'create_country' %}" class="btn btn-outline-success"> Create</a>
+    <table class="table table-striped" >
+        <thead>
+          <tr >
+            <th scope="col">id</th>
+            <th scope="col">Capital_city</th>
+            <th scope="col">population</th>
+            <th scope="col">images</th>
+            <th scope="col">date</th>
+            <th scope="col">Register</th>
+
+
+          </tr>
+        </thead>
+        <tbody>
+            {% for country in count %}
+          <tr>
+            <th scope="row" style="border: 1px solid blue;">{{ country.id }}</th>
+            <td>{{ country.capital_city }}</td>
+            <td>{{ country.population }}</td>
+            <td><img src="media/{{country.image}}" alt=""></td>
+
+            <td>{{ country.date }}</td>
+            <td> <a class="btn btn-outline-primary" href="{% url 'read_country' country.id %}"> Read </a></td>
+            <td> <a class="btn btn-outline-info" href="{% url 'update_country' country.id %}"> Update </a></td>
+            <td> <a class="btn btn-outline-danger" href="{% url 'delete_country' country.id %}"> Remove </a></td>
+
+
+          </tr>
+          {% endfor %}
+          </tbody>
+        </table>
+</nav>
+
+{% endblock content %}

@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+
+{% block content %}
+{% load static %}
+<h1>
+  Company
+</h1>
+  <div class="container">
+    <a href="{% url 'create_company' %}" class="btn btn-success"> Create</a>  
+  <table class="table table-striped">
+        <thead>
+          <tr>
+            <th scope="col">id</th>
+            <th scope="col">Company_name</th>
+            <th scope="col">date</th>
+            <th scope="col">Register</th>
+
+          </tr>
+        </thead>
+        <tbody>
+            {% for company in comp %}
+          <tr>
+            <th scope="row" style="border: 1px solid blue;">{{ company.id }}</th>
+            <td>{{ company.company_name }}</td>
+            <td>{{ company.date }}</td>
+            <td>
+              <a class="btn btn-outline-primary" href="{% url 'read_company' company.id %}"> Read </a>
+              </td>
+              <td>
+                <a class="btn btn-outline-info" href="{% url 'update_company' company.id %}"> Update </a>
+                </td>
+                <td>
+                  <a class="btn btn-outline-danger" href="{% url 'delete_company' company.id %}"> Remove </a>
+
+                </td>
+          </tr>
+          {% endfor %}
+          </tbody>
+        </table>
+  </div>
+
+{% endblock content %}

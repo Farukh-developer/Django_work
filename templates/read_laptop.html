@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+{% block title %}
+<title>Read Laptop </title>
+{% endblock title %}
+
+{% block content %}
+<h1>Read Laptop</h1>
+<p>
+    <ul>
+        <li>{{computer.id}}</li>
+        <li>{{computer.model}}</li>
+        <li>{{computer.color}}</li>
+        <li>{{computer.price}}</li>
+        <li>{{computer.date}}</li>
+        
+    </ul>
+    
+</p>
+{% endblock content %}

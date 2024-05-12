@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+
+{% block content %}
+{% load static %}
+<nav>
+
+<h1>
+  Laptop
+</h1>
+<a href="{% url 'create_laptop' %}" class="btn btn-success">Create</a>
+    <table class="table" style="border: 1px solid blue;">
+        <thead>
+          <tr>
+            <th scope="col">id</th>
+            <th scope="col">model</th>
+            <th scope="col">price</th>
+            <th scope="col">date</th>
+            <th scope="col">Log In</th>
+
+          </tr>
+        </thead>
+        <tbody>
+            {% for laptop in computer %}
+          <tr>
+            <th scope="row" style="border: 1px solid blue;">{{ laptop.id }}</th>
+            <td>{{ laptop.model }}</td>
+            <td>{{ laptop.price }}</td>
+            <td>{{ laptop.date }}</td>
+           <td>
+            <a class="btn btn-outline-primary" href="{% url 'read_laptop' laptop.id %}"> Read</a>
+           </td>
+           <td>
+            <a class="btn btn-outline-info" href="{% url 'update_laptop' laptop.id %}"> Update</a>
+           </td>
+           <td>
+            <td>
+              <a class="btn btn-outline-danger" href="{% url 'delete_laptop' laptop.id %}"> Remove</a>
+             </td>
+             <td>
+            
+          </tr>
+          {% endfor %}
+          </tbody>
+        </table>
+</nav>
+
+{% endblock content %}

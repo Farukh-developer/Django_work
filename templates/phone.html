@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+
+{% block content %}
+{% load static %}
+<nav>
+  <h1>
+    Phone
+  </h1>
+<a href="{% url 'create_phone' %}" class="btn btn-success">Create</a>
+    <table class="table" style="border: 1px solid blue;">
+        <thead>
+          <tr>
+            <th scope="col">id</th>
+            <th scope="col">model</th>
+            <th scope="col">color</th>
+            <th scope="col">date</th>
+            <th scope="col">Log in</th>
+          </tr>
+        </thead>
+        <tbody>
+            {% for phone in mobile %}
+          <tr>
+            <th scope="row" style="border: 1px solid blue;">{{ phone.id }}</th>
+            <td>{{ phone.model }}</td>
+            <td>{{ phone.color }}</td>
+            <td>{{ phone.date }}</td>
+            <td> <a class="btn btn-outline-primary" href="{% url 'read_phone' phone.id %}"> Read </a>
+            <td> <a class="btn btn-outline-info" href="{% url 'update_phone' phone.id %}"> Update </a>
+            <td> <a class="btn btn-outline-danger" href="{% url 'delete_phone' phone.id %}"> Remove </a>
+
+            
+            </td>
+          </tr>
+          {% endfor %}
+          </tbody>
+        </table>
+</nav>
+
+{% endblock content %}
